@@ -15,7 +15,7 @@ const client = new Client({
 //communicates with discords api to help initialize slash commands (https://discordjs.guide/additional-info/rest-api.html#making-http-requests-with-node)
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
-//states the bot is initialized
+//states the bot is initialized to the console
 client.on("ready", () => {
     console.log("Bot initialised")  
 })
