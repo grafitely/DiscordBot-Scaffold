@@ -40,7 +40,9 @@ async function main (){
             body: commands
         });
     }
-    catch(e){   
+    catch(e){
+        console.log("Trouble talking to discord. Please check your firewall.") //Empty catch blocks are bad practice (It lets the program fail silently.)
+        console.log(`Error is: ${e}`)
 
     } 
 }
