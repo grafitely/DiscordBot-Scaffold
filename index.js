@@ -28,22 +28,19 @@ client.on(Events.MessageDelete, message => {
 
 //initializes slash commands 
 async function main (){
+    const PingCommand = new SlashCommandBuilder()
+      .setName("ping")
+      .setDescription("replies with pong!")
+    
+    const commands = [PingCommand.toJSON()]
     try{
-        const commands = [
-            {
-              name: 'ping',
-              description: 'Replies with Pong!',
-            },
-        ];
 
-        await rest.put(Routes.applicationCommands(process.env.CLIENTID), {
-            body: commands
+        await rest.put(Routes.applicationGuildCommands(process.env.CLIENTID, process.env.GUILDID), {
+            body: commands, 
         });
     }
-    catch(e){
-        console.log("Trouble talking to discord. Please check your firewall.") //Empty catch blocks are bad practice (It lets the program fail silently.)
-        console.log(`Error is: ${e}`)
-
+    catch(e){   
+      console.log(e);
     } 
 }
 
